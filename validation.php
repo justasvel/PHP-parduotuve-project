@@ -13,7 +13,7 @@ if (!$conn) {
 }
 
 //Get the user details from database
-$userInfo = mysqli_query($conn, "SELECT vardas, slaptazodis, elpastas FROM vartotojai WHERE elpastas='$email'");
+$userInfo = mysqli_query($conn, "SELECT vardas, slaptazodis, elpastas, vartotojo_id FROM vartotojai WHERE elpastas='$email'");
 $userInfoRow = mysqli_fetch_assoc($userInfo);
 
 //Check the returned data from the database
@@ -24,6 +24,7 @@ if ($userInfoRow == null) {
     if ($email == $userInfoRow['elpastas'] && $password == $userInfoRow['slaptazodis']) {
         setcookie('user', $email, time()+60*60*4, '/');
         setcookie('vardas', $userInfoRow['vardas'], time()+60*60*4, '/');
+        setcookie('id', $userInfoRow['vartotojo_id'], time()+60*60*4, '/');
         header('Location: inside.php');
     } else {
         echo "Prisijungti nepavyko. Neteisingai ivestas slaptazodis arba el. pastas.<br>";
