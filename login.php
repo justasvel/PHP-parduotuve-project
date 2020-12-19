@@ -1,5 +1,5 @@
 <?php
-    if (isset($_COOKIE['vartototjas'])) {
+    if (isset($_COOKIE['user'])) {
         header('Location: inside.php');
     }
 ?>
