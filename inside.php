@@ -53,7 +53,6 @@
                 ?>
             </select>
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
-            <input type="submit" name="atsiskaityti" value="Atsiskaityti">
         </form>
 
         <?php
@@ -95,7 +94,6 @@
                 ?>
             </select>
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
-            <input type="submit" name="atsiskaityti" value="Atsiskaityti">
         </form>
         <?php
         ///////////////////////////////////////////LAISVALAIKIO
@@ -137,7 +135,6 @@
                 ?>
             </select>
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
-            <input type="submit" name="atsiskaityti" value="Atsiskaityti">
         </form>
     </body>
 </html>
