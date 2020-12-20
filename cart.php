@@ -14,7 +14,7 @@ if(isset($_POST['prideti'])) {
             . "VALUES ('$userID', '$good')";
     mysqli_query($conn, $addItem);
     header('Location: inside.php');
-} else if (isset($_POST['atsiskaityti'])) {
+} else if (isset($_POST['baigti'])) {
     $orderInfoSQL = "SELECT * FROM krepselis LEFT JOIN prekes ON prekes.pavadinimas=krepselis.preke WHERE krepselis.vartotojo_id='$userID'";
     
     $getOrder = mysqli_query($conn, $orderInfoSQL);

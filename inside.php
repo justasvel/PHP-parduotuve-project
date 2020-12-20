@@ -7,6 +7,7 @@
 
         <?php
         $vartotojoVardas = $_COOKIE['vardas'];
+        $userID = $_COOKIE['id'];
 
 //Check if user is loged in and print the welcoming
         if (isset($vartotojoVardas)) {
@@ -115,7 +116,7 @@
         }
         ?>
         <h4>Pasirinkite prekę</h4>
-        <form action="cart.php" method="POST">
+        <form action="cart.php" method="POST" id="finalForm">
             <select name="preke">
                 <?php
                 //Connection to the database
@@ -136,5 +137,17 @@
             </select>
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
         </form>
+        <?php
+            $conn = mysqli_connect("localhost", "root", "", "parduotuve");
+            $checkCartSQL = "SELECT * FROM krepselis WHERE vartotojo_id='$userID'";
+            
+            $resultCartCheck = mysqli_query($conn, $checkCartSQL);
+            
+            if (mysqli_num_rows($resultCartCheck) > 0) {
+                ?>
+                <button type="submit" form="finalForm" style="background-color: green; color:white" name="baigti">Baigti apsipirkimą</button> 
+                <?php
+            }
+        ?>
     </body>
 </html>
