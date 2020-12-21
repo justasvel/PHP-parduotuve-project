@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "parduotuve");
 $userID = $_COOKIE['id'];
 $vartotojoVardas = $_COOKIE['vardas'];
@@ -28,3 +28,14 @@ if(isset($_POST['prideti'])) {
     
     echo "<h4>Viso: " . $orderTotal . " &euro; </h4>";
 }
+?>
+<html>
+    <body>
+        
+        <form method="POST" action="checkcart.php">
+            <input type="submit" name="back" value="Grįžti į pagrindinį">
+            <input type="submit" name="remove" value="Pašalinti prekes iš krepšelio">
+            <input type="submit" name="logout" value="Atsijungti">
+        </form>
+    </body>
+</html>

@@ -139,6 +139,7 @@
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
         </form>
         <?php
+        //Check if there is anything in the shopping cart, if so create button
         $conn = mysqli_connect("localhost", "root", "", "parduotuve");
         $checkCartSQL = "SELECT * FROM krepselis WHERE vartotojo_id='$userID'";
 
