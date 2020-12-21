@@ -6,8 +6,10 @@
     <body>
 
         <?php
+        session_start();
         $vartotojoVardas = $_COOKIE['vardas'];
         $userID = $_COOKIE['id'];
+        $_SESSION['user'] = $userID;
 
 //Check if user is loged in and print the welcoming
         if (isset($vartotojoVardas)) {
@@ -97,9 +99,8 @@
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
         </form>
         <?php
-        ///////////////////////////////////////////LAISVALAIKIO
-        
-                //Connection to the database
+        ///////////////////////////////////////////STATYBINES
+        //Connection to the database
         $conn = mysqli_connect("localhost", "root", "", "parduotuve");
 
         if (!$conn) {
@@ -138,16 +139,21 @@
             <input type="submit" name="prideti" value="Pridėti į krepšelį">
         </form>
         <?php
-            $conn = mysqli_connect("localhost", "root", "", "parduotuve");
-            $checkCartSQL = "SELECT * FROM krepselis WHERE vartotojo_id='$userID'";
-            
-            $resultCartCheck = mysqli_query($conn, $checkCartSQL);
-            
-            if (mysqli_num_rows($resultCartCheck) > 0) {
-                ?>
-                <button type="submit" form="finalForm" style="background-color: green; color:white" name="baigti">Baigti apsipirkimą</button> 
-                <?php
-            }
+        $conn = mysqli_connect("localhost", "root", "", "parduotuve");
+        $checkCartSQL = "SELECT * FROM krepselis WHERE vartotojo_id='$userID'";
+
+        $resultCartCheck = mysqli_query($conn, $checkCartSQL);
+
+        if (mysqli_num_rows($resultCartCheck) > 0) {
+            ?>
+            <button type="submit" form="finalForm" style="background-color: green; color:white" name="baigti">Baigti apsipirkimą</button> 
+            <?php
+        }
         ?>
+        <br>
+        <br>
+        <form method="POST" action="questions/question1.php">
+            Ivertinkite mūsų parduotuvės kokybę! <input type="submit" name="test" value="Įvertinti">
+        </form>
     </body>
 </html>
