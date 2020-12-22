@@ -22,9 +22,9 @@ if ($userInfoRow == null) {
 } else {
     //Check if email and password matches the database
     if ($email == $userInfoRow['elpastas'] && $password == $userInfoRow['slaptazodis']) {
-        setcookie('user', $email, time()+60*60*4, '/');
-        setcookie('vardas', $userInfoRow['vardas'], time()+60*60*4, '/');
-        setcookie('id', $userInfoRow['vartotojo_id'], time()+60*60*4, '/');
+        setcookie('user', $email, time()+60*60*4);
+        setcookie('vardas', $userInfoRow['vardas'], time()+60*60*4);
+        setcookie('id', $userInfoRow['vartotojo_id'], time()+60*60*4);
         header('Location: inside.php');
     } else {
         echo "Prisijungti nepavyko. Neteisingai ivestas slaptazodis arba el. pastas.<br>";
